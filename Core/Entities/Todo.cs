@@ -1,8 +1,6 @@
-﻿using Core.Entities;
-using Core.Exceptions;
+﻿using Core.Exceptions;
 
 namespace Core.Entities;
-
 public class Todo
 {
     public string Id { get; private set; }

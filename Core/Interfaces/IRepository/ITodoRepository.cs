@@ -7,4 +7,5 @@ public interface ITodoRepository
     void Save(Todo todo);
     List<Todo> GetAll();
     void Update(Todo todo);
+    List<Todo> getNewTodos();
 }
