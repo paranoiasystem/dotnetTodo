@@ -1,57 +1,38 @@
-﻿using Core.Exceptions;
+﻿using Core.Entities;
+using Core.Exceptions;
 
 namespace Core.Entities;
 
 public class Todo
 {
-    private String _id;
-    private String _title;
-    private String _description;
-    private TodoStatus _status;
+    public string Id { get; private set; }
+    public string Title { get; private set; }
+    public string Description { get; private set; }
+    public TodoStatus Status { get; private set; }
     
-    public Todo(String id, String title, String description, TodoStatus status)
+    public Todo(string id, string title, string description, TodoStatus status)
     {
-        _id = id;
-        _title = title;
-        _description = description;
-        _status = status;
+        this.Id = id;
+        Title = title;
+        Description = description;
+        Status = status;
     }
     
     public void MarkAsDone()
     {
-        if (_status == TodoStatus.Done)
+        if (Status == TodoStatus.Done)
         {
-            throw new TodoAlReadyDone(_id);
+            throw new TodoAlReadyDone(Id);
         }
-        _status = TodoStatus.Done;
+        Status = TodoStatus.Done;
     }
     
     public void MarkAsInProgress()
     {
-        if (_status == TodoStatus.InProgress)
+        if (Status == TodoStatus.InProgress)
         {
-            throw new TodoAlReadyInProgress(_id);
+            throw new TodoAlReadyInProgress(Id);
         }
-        _status = TodoStatus.InProgress;
-    }
-    
-    public String Id()
-    {
-        return _id;
-    }
-    
-    public String Title()
-    {
-        return _title;
-    }
-    
-    public String Description()
-    {
-        return _description;
-    }
-    
-    public TodoStatus Status()
-    {
-        return _status;
+        Status = TodoStatus.InProgress;
     }
 }

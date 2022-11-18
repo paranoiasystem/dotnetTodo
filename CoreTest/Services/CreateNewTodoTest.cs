@@ -16,7 +16,9 @@ public class CreateNewTodoTest
     {
         CreateNewTodo createNewTodo = new CreateNewTodo(new TodoRepository());
         Todo todo = createNewTodo.Execute("Test", "Test Description");
-        Assert.AreEqual("Test", todo.Title());
-        Assert.AreEqual("Test Description", todo.Description());
+        Assert.NotNull(todo.Id);
+        Assert.AreEqual("Test", todo.Title);
+        Assert.AreEqual("Test Description", todo.Description);
+        Assert.AreEqual(TodoStatus.New, todo.Status);
     }
 }
